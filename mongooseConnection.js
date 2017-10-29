@@ -1,17 +1,21 @@
+/* @flow */
+
 import mongoose from 'mongoose';
 import { mongoUri } from './config';
 
 mongoose.Promise = Promise;
-mongoose.connect(mongoUri, {
-  server: {
-    auto_reconnect: true,
-    reconnectTries: Number.MAX_VALUE,
-    reconnectInterval: 1000,
-  }
-});
 
-export const connection = mongoose.connection;
-connection.on('error', (e) => {
+const opts = {
+  autoReconnect: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 1000,
+  useMongoClient: true,
+};
+
+mongoose.connect(mongoUri, opts);
+
+export const { connection } = mongoose;
+connection.on('error', e => {
   if (e.message.code === 'ETIMEDOUT') {
     console.log(e);
     mongoose.connect(mongoUri, opts);

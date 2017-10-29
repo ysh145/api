@@ -1,5 +1,8 @@
+/* @flow */
+
 import path from 'path';
 import fs from 'fs';
+
 
 export const qosConfig = {
   appId: process.env.QOS_APP_ID || '1253923624',
@@ -9,25 +12,26 @@ export const qosConfig = {
   region: process.env.QOS_REGION || 'tj'
 }
 
-export const expressPort = process.env.PORT || 3001;
+export const expressPort = process.env.PORT || 3000;
 export const imagePort = process.env.IMAGE_PORT || 3002;
-// - MONGODB_URI="mongodb://dev:SDKdev.2017@mongo.app.shandianke.com.cn:27020/sdkdev"
-// > use admin
-// switched to db admin
-// > db.createUser({user: 'root', pwd: 'ossur.china.123', roles:[{role:'dbOwner',db:'ossur'},{role:'read', db:'local'}]})
-export const mongoUri = process.env.MONGODB_URI || 'mongodb://root:ossur.china.123@mongo.mp.ossurchina.cn:27017/ossur';
+
+export const mongoUri =
+  // process.env.MONGODB_URI || 'mongodb://localhost:27017/graphql-compose-mongoose';
+  process.env.MONGODB_URI || 'mongodb://root:ossur.china.123@mongo.mp.ossurchina.cn:27017/ossur';
 export const examplesPath = './examples';
 
-export function getDirectories(srcpath) {
-  return fs.readdirSync(srcpath).filter(file => fs.statSync(path.join(srcpath, file)).isDirectory());
+export function getDirectories(srcPath: string): string[] {
+  return fs
+    .readdirSync(srcPath)
+    .filter(file => fs.statSync(path.join(srcPath, file)).isDirectory());
 }
 
-export function resolveExamplePath(...args) {
+export function resolveExamplePath(...args: any) {
   return path.resolve(examplesPath, ...args);
 }
 
 export function getExampleNames() {
-  const preferableOrder = ['customer'];
+  const preferableOrder = ['api'];
   const dirs = getDirectories(examplesPath);
 
   const result = [];
