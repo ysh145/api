@@ -19,7 +19,7 @@ export const imagePort = process.env.IMAGE_PORT || 3002;
 // > db.createUser({user: 'ossur', pwd: 'ossur.2017', roles:[{role:'dbOwner',db:'ossur'},{role:'read', db:'local'}]})
 export const mongoUri =
   // process.env.MONGODB_URI || 'mongodb://localhost:27017/graphql-compose-mongoose';
-  process.env.MONGODB_URI || 'mongodb://ossur:ossur.2017@mongo.mp.ossurchina.cn:27017/ossur';
+  process.env.MONGODB_URI || 'mongodb://mongo.mp.ossurchina.cn:27017/ossur';
 export const ossurPath = './ossur';
 
 export function getDirectories(srcPath: string): string[] {
