@@ -37,7 +37,7 @@
     "express-graphql": "^0.5.3",
     "graphql": "^0.10.3",
     "graphql-compose": "^2.9.4",
-    "graphql-compose-connection": "^2.5.2",
+    "graphql-compose-connection": "^2.2.2",
     "graphql-compose-elasticsearch": "^1.7.10",
     "graphql-compose-mongoose": "^1.5.1",
     "graphql-compose-pagination": "^1.1.0",
