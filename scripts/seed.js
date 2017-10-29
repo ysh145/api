@@ -1,6 +1,6 @@
 /* @flow */
 /* eslint-disable no-await-in-loop */
-// This script scans `examples` folder for `data/seed.js` files and run them for seeding DB.
+// This script scans `ossur` folder for `data/seed.js` files and run them for seeding DB.
 
 import { MongoClient } from 'mongodb';
 import fs from 'fs';

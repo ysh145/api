@@ -18,7 +18,7 @@ export const imagePort = process.env.IMAGE_PORT || 3002;
 export const mongoUri =
   // process.env.MONGODB_URI || 'mongodb://localhost:27017/graphql-compose-mongoose';
   process.env.MONGODB_URI || 'mongodb://root:ossur.china.123@mongo.mp.ossurchina.cn:27017/ossur';
-export const examplesPath = './examples';
+export const ossurPath = './ossur';
 
 export function getDirectories(srcPath: string): string[] {
   return fs
@@ -27,12 +27,12 @@ export function getDirectories(srcPath: string): string[] {
 }
 
 export function resolveExamplePath(...args: any) {
-  return path.resolve(examplesPath, ...args);
+  return path.resolve(ossurPath, ...args);
 }
 
 export function getExampleNames() {
   const preferableOrder = ['api'];
-  const dirs = getDirectories(examplesPath);
+  const dirs = getDirectories(ossurPath);
 
   const result = [];
   preferableOrder.forEach(name => {

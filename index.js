@@ -7,7 +7,7 @@ import body_parser from'body-parser';
 import multer      from'multer';
 import sizeOf      from'image-size';
 import shortid     from'shortid'
-import {upload}    from'./examples/api/utils/qos';
+import {upload}    from'./ossur/api/utils/qos';
 
 import { mainPage, addToMainPage } from './mainPage';
 import { expressPort, imagePort, getExampleNames, resolveExamplePath } from './config';
@@ -32,7 +32,7 @@ server.all('*',function (req, res, next) {
 })
 
 
-// scan `examples` directory and add
+// scan `ossur` directory and add
 // - graphql endpoint by uri /exampleDirName
 // - links and example queries to index page
 const exampleNames = getExampleNames();

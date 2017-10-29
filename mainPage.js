@@ -1,13 +1,13 @@
 import qs from 'querystring'
 
-const examplesMeta = [];
+const ossurMeta = [];
 
 export function addToMainPage(example) {
-  examplesMeta.push(example);
+  ossurMeta.push(example);
 }
 
-function renderExamplesLinks() {
-  const examplesHtml = examplesMeta.map(meta => {
+function renderOssurLinks() {
+  const ossurHtml = ossurMeta.map(meta => {
     const titleHtml = `<h4>
       ${meta.title}
     </h4>`;
@@ -31,7 +31,7 @@ function renderExamplesLinks() {
     return `${titleHtml}${descriptionHtml}${queriesHtml}`;
   });
 
-  return `<ol><li>${examplesHtml.join('</li><li>')}</li></ol>`;
+  return `<ol><li>${ossurHtml.join('</li><li>')}</li></ol>`;
 }
 
 export function mainPage() {
@@ -44,7 +44,7 @@ export function mainPage() {
       <body>
         <div class="container">
           <h1>API Documents</h1>
-          ${renderExamplesLinks()}
+          ${renderOssurLinks()}
 
 
         <br /><br /><br /><br /><br />
