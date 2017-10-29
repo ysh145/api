@@ -10,7 +10,7 @@ import shortid     from'shortid'
 import {upload}    from'./ossur/api/utils/qos';
 
 import { mainPage, addToMainPage } from './mainPage';
-import { expressPort, imagePort, getExampleNames, resolveExamplePath } from './config';
+import { expressPort, imagePort, getOssurNames, resolveOssurPath } from './config';
 import './mongooseConnection';
 
 const uploaded = multer({limits:{ fileSize: 1024* 1024 * 100 }, storage: multer.memoryStorage()})      // { dest: '_uploaded/' }
@@ -33,12 +33,12 @@ server.all('*',function (req, res, next) {
 
 
 // scan `ossur` directory and add
-// - graphql endpoint by uri /exampleDirName
-// - links and example queries to index page
-const exampleNames = getExampleNames();
-for (let name of exampleNames) {
-  addExample(
-    require(resolveExamplePath(name)).default,
+// - graphql endpoint by uri /ossurDirName
+// - links and ossur queries to index page
+const Names = getOssurNames();
+for (let name of Names) {
+  addOssur(
+    require(resolveOssurPath(name)).default,
     name
   );
 }
@@ -53,17 +53,17 @@ server.listen(expressPort, () => {
 });
 
 
-function addExample(example, uri) {
-  example.uri = `/${uri}`;
-  server.use(example.uri, graphqlHTTP(req => ({
-    schema: example.schema,
+function addOssur(ossur, uri) {
+  ossur.uri = `/${uri}`;
+  server.use(ossur.uri, graphqlHTTP(req => ({
+    schema: ossur.schema,
     graphiql: true,
     formatError: (error) => ({
       message: error.message,
       stack: !error.message.match(/for security reason/i) ? error.stack.split('\n') : null,
     }),
   })));
-  addToMainPage(example);
+  addToMainPage(ossur);
 }
 
 const app = express()

@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { graphql } from 'graphql';
 import { introspectionQuery, printSchema } from 'graphql/utilities';
-import { getExampleNames, resolveExamplePath } from './config';
+import { getOssurNames, resolveOssurPath } from './config';
 
 async function buildSchema(schemaPath) {
   const Schema = require(`${schemaPath}/graphqlSchema`).default;
@@ -29,10 +29,10 @@ async function buildSchema(schemaPath) {
 }
 
 async function run() {
-  const exampleNames = getExampleNames();
-  for (let name of exampleNames) {
+  const Names = getOssurNames();
+  for (let name of Names) {
     console.log(`Building schema for '${name}'...`);
-    await buildSchema(resolveExamplePath(name));
+    await buildSchema(resolveOssurPath(name));
   }
 
   console.log('Building schemas competed!');

@@ -28,11 +28,11 @@ export function getDirectories(srcPath: string): string[] {
     .filter(file => fs.statSync(path.join(srcPath, file)).isDirectory());
 }
 
-export function resolveExamplePath(...args: any) {
+export function resolveOssurPath(...args: any) {
   return path.resolve(ossurPath, ...args);
 }
 
-export function getExampleNames() {
+export function getOssurNames() {
   const preferableOrder = ['api'];
   const dirs = getDirectories(ossurPath);
 

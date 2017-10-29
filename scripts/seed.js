@@ -4,17 +4,17 @@
 
 import { MongoClient } from 'mongodb';
 import fs from 'fs';
-import { getExampleNames, resolveExamplePath, mongoUri } from '../config';
+import { getOssurNames, resolveOssurPath, mongoUri } from '../config';
 
 let db;
 async function run() {
   db = await MongoClient.connect(mongoUri, { promiseLibrary: Promise });
 
-  const exampleNames = getExampleNames();
-  for (const name of exampleNames) {
+  const Names = getOssurNames();
+  for (const name of Names) {
     console.log(`Starting seed '${name}'...`);
 
-    const seedFile = resolveExamplePath(name, 'data/seed.js');
+    const seedFile = resolveOssurPath(name, 'data/seed.js');
     try {
       await new Promise((resolve, reject) => {
         fs.access(seedFile, fs.F_OK, err => {

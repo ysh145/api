@@ -2,8 +2,8 @@ import qs from 'querystring'
 
 const ossurMeta = [];
 
-export function addToMainPage(example) {
-  ossurMeta.push(example);
+export function addToMainPage(ossur) {
+  ossurMeta.push(ossur);
 }
 
 function renderOssurLinks() {
