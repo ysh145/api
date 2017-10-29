@@ -11,16 +11,15 @@ export default {
     {
       title: 'product',
       query: `
-query product($subSolution: String!) {
-  products: caseMany(filter: {subSolution: $subSolution}) {
-    _id
-    title
-    images
-  }
-}
 
+      query product($solution: String!) {
+        products: productMany(filter: {solution: $solution}) {
+          _id
+          title
+        }
+      }
       `,variables: JSON.stringify({
-        "subSolution":"OA"
+        "solution": "OA"
       }),
     },
   ]
