@@ -12,7 +12,7 @@ export const qosConfig = {
   region: process.env.QOS_REGION || 'tj'
 }
 
-export const expressPort = process.env.PORT || 3000;
+export const expressPort = process.env.PORT || 3001;
 export const imagePort = process.env.IMAGE_PORT || 3002;
 // > use admin
 // switched to db admin
